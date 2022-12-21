@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import CustomText from '../../atoms/CustomText';
 
-const ImageDetails = ({ title, imageSource }) => {
+const ImageDetails = ({title, imageSource}) => {
   return (
     <View>
       <CustomText mb={7}>{title}</CustomText>

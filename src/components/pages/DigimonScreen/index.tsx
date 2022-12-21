@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, TextInput, StyleSheet} from 'react-native';
 import CustomButton from '../../atoms/CustomButton';
 import CustomText from '../../atoms/CustomText';
 import BasicLayout from '../../layouts/BasicLayout';
-import { apiDigimon } from '../../../services/apiMethods';
+import {apiDigimon} from '../../../services/apiMethods';
 import ImageDetailsUri from '../../organisms/ImageDetailsUri';
 
-const DigimonScreen = () => {
+const DigimonScreen: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [textInputValue, setTextInputValue] = useState('');
   const [digimon, setDigimon] = useState({});
@@ -34,31 +34,33 @@ const DigimonScreen = () => {
 
   return (
     <BasicLayout title="Digimon Searcher" marginLeft={0}>
-      <TextInput
-        onChangeText={value => {
-          setTextInputValue(value);
-        }}
-        value={textInputValue}
-      />
-      <CustomButton
-        title="Call API"
-        onPress={async () => {
-          await onPressButton(textInputValue);
-        }}
-      />
-      {loading && <CustomText>loading...</CustomText>}
-      {digimon && (
-        <View style={styles.viewStyle}>
-          <CustomText>{digimon.id}</CustomText>
-          <CustomText>{digimon.name}</CustomText>
-          <ImageDetailsUri
-            imageSource={digimon.images}
-            width={200}
-            height={200}
-          />
-          <CustomText>{digimon.types}</CustomText>
-        </View>
-      )}
+      <>
+        <TextInput
+          onChangeText={value => {
+            setTextInputValue(value);
+          }}
+          value={textInputValue}
+        />
+        <CustomButton
+          title="Call API"
+          onPress={async () => {
+            await onPressButton(textInputValue);
+          }}
+        />
+        {loading && <CustomText>loading...</CustomText>}
+        {digimon && (
+          <View style={styles.viewStyle}>
+            <CustomText>{digimon.id}</CustomText>
+            <CustomText>{digimon.name}</CustomText>
+            <ImageDetailsUri
+              imageSource={digimon.images}
+              width={200}
+              height={200}
+            />
+            <CustomText>{digimon.types}</CustomText>
+          </View>
+        )}
+      </>
     </BasicLayout>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { decrement, increment } from '../../../redux/slices/counterSlice';
+import {View, Text} from 'react-native';
+import {useAppSelector, useAppDispatch} from '../../../app/hooks';
+import {decrement, increment} from '../../../redux/slices/counterSlice';
 import CustomButton from '../../atoms/CustomButton';
 
 const ReduxScreen = () => {
@@ -10,9 +10,9 @@ const ReduxScreen = () => {
 
   return (
     <View>
-      <Text style={{ color: 'black' }}>Redux Example</Text>
+      <Text style={{color: 'black'}}>Redux Example</Text>
       <CustomButton title="Increment" onPress={() => dispatch(increment())} />
-      <Text style={{ color: 'black' }}>{count}</Text>
+      <Text style={{color: 'black'}}>{count}</Text>
       <CustomButton title="Decrement" onPress={() => dispatch(decrement())} />
     </View>
   );

@@ -6,8 +6,8 @@ interface Props {
   title?: string;
 }
 
-const ComponentsScreen: React.FC<Props> = ({ children }: any) => {
-  return <BasicLayout title="Hola">{children}</BasicLayout>;
+const ComponentsScreen: React.FC<Props> = ({children}: any) => {
+  return <BasicLayout title="Components">{children}</BasicLayout>;
 };
 
 export default ComponentsScreen;

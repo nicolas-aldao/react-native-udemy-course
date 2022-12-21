@@ -1,15 +1,15 @@
 import React from 'react';
-import {Text, StyleSheet, useColorScheme} from 'react-native';
+import { Text, StyleSheet, useColorScheme } from 'react-native';
 
 interface Props {
-  children: string;
-  style?: {[key: string]: string | number};
+  children: string | number;
+  style?: { [key: string]: string | number };
   titleStyle?: boolean;
   mb?: number;
 }
 
-const CustomText: React.FC<Props> = ({children, titleStyle, mb}, props) => {
-  const marginBottom = {marginBottom: mb ? mb : 0};
+const CustomText: React.FC<Props> = ({ children, titleStyle, mb }, props) => {
+  const marginBottom = { marginBottom: mb ? mb : 0 };
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <Text

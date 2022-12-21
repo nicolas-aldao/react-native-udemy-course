@@ -11,6 +11,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
+import { theme } from './src/themes';
 import HomeScreen from './src/components/pages/HomeScreen';
 import ListScreen from './src/components/pages/ListScreen';
 import ComponentsScreen from './src/components/pages/ComponentsScreen';
@@ -20,20 +23,15 @@ import ColorScreen from './src/components/pages/ColorScreen';
 import ChangeColorScreen from './src/components/pages/ChangeColorScreen';
 import ReduxScreen from './src/components/pages/ReduxScreen';
 import DigimonScreen from './src/components/pages/DigimonScreen';
-import { store } from './src/redux/store';
-import { Provider } from 'react-redux';
 import ApiScreen from './src/components/pages/ApiScreen';
+import FormScreen from './src/components/pages/FormScreen';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
 
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
-
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer theme={theme}>
         <Stack.Navigator id="MyNavigator">
           <Stack.Screen
             name="Home"
@@ -49,6 +47,7 @@ const App = () => {
           <Stack.Screen name="Redux" component={ReduxScreen} />
           <Stack.Screen name="Api" component={ApiScreen} />
           <Stack.Screen name="Digimon" component={DigimonScreen} />
+          <Stack.Screen name="Form" component={FormScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

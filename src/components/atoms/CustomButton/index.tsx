@@ -1,12 +1,13 @@
 import React from 'react';
-import {Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { theme } from '../../../themes';
 
 interface Props {
   title: string;
   onPress: () => void;
 }
 
-const CustomButton: React.FC<Props> = ({title, onPress}) => {
+const CustomButton: React.FC<Props> = ({ title, onPress }) => {
   return (
     <TouchableOpacity
       style={styles.buttonStyle}
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     height: 50,
     width: 200,
-    backgroundColor: '#6C4AB6',
+    backgroundColor: theme.colors.primary,
     font: 'white',
     display: 'flex',
     justifyContent: 'center',

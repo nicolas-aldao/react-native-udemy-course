@@ -27,6 +27,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
     'Api',
     'Digimon',
     'ChangeColor',
+    'Form',
   ];
   return (
     <BasicLayout marginLeft={0} title="Inicio">

@@ -59,7 +59,9 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
-# Ruby / CocoaPods
-/ios/Pods/
+# Ruby
 /vendor/bundle/
-node_modules
+
+# Platform folders
+ios/
+android/

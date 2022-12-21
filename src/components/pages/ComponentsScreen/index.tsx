@@ -1,13 +1,17 @@
 import React from 'react';
+import CustomText from '../../atoms/CustomText';
 import BasicLayout from '../../layouts/BasicLayout';
 
 interface Props {
-  children: JSX.Element;
   title?: string;
 }
 
-const ComponentsScreen: React.FC<Props> = ({children}: any) => {
-  return <BasicLayout title="Components">{children}</BasicLayout>;
+const ComponentsScreen: React.FC<Props> = () => {
+  return (
+    <BasicLayout title="Form">
+      <CustomText>Content goes here</CustomText>
+    </BasicLayout>
+  );
 };
 
 export default ComponentsScreen;

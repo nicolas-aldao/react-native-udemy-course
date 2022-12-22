@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import CustomButton from '../CustomButton';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   onDecrease: () => void;
 }
 
-const ColorCounter: React.FC<Props> = ({color, onIncrease, onDecrease}) => {
+const ColorCounter: React.FC<Props> = ({ color, onIncrease, onDecrease }) => {
   return (
     <View>
       <CustomButton title={`Increase ${color}`} onPress={() => onIncrease()} />

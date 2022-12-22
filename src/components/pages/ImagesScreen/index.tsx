@@ -8,15 +8,15 @@ const ImagesScreen = () => {
       <>
         <ImageDetails
           title="Forest"
-          imageSource={require('../../../assets/forest.jpg')}
+          imageSource={require('../../../assets/img/forest.jpg')}
         />
         <ImageDetails
           title="Beach"
-          imageSource={require('../../../assets/beach.jpg')}
+          imageSource={require('../../../assets/img/beach.jpg')}
         />
         <ImageDetails
           title="Mountain"
-          imageSource={require('../../../assets/mountain.jpg')}
+          imageSource={require('../../../assets/img/mountain.jpg')}
         />
       </>
     </BasicLayout>

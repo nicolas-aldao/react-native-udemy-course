@@ -56,6 +56,7 @@ export const darkTheme: DefaultTheme = {
 
 const getTheme = (): DefaultTheme => {
   const colorScheme = Appearance.getColorScheme();
+  console.log("🚀 ~ file: index.ts:59 ~ getTheme ~ colorScheme", colorScheme)
   if (colorScheme === 'dark') {
     return darkTheme;
   }

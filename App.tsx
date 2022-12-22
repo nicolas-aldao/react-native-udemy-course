@@ -25,6 +25,7 @@ import ReduxScreen from './src/components/pages/ReduxScreen';
 import DigimonScreen from './src/components/pages/DigimonScreen';
 import ApiScreen from './src/components/pages/ApiScreen';
 import FormScreen from './src/components/pages/FormScreen';
+import SearchScreen from './src/components/pages/SearchScreen';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -35,8 +36,8 @@ const App = () => {
         <Stack.Navigator id="MyNavigator">
           <Stack.Screen
             name="Home"
-            component={HomeScreen}
-            options={{ title: 'Welcome' }}
+            component={SearchScreen}
+            //options={{ title: 'Welcome' }}
           />
           <Stack.Screen name="Components" component={ComponentsScreen} />
           <Stack.Screen name="List" component={ListScreen} />

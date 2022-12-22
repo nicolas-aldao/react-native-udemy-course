@@ -2,17 +2,19 @@ import React from 'react';
 import { TextInput, StyleSheet, useColorScheme } from 'react-native';
 
 interface Props {
-  children: string | number;
-  style?: { [key: string]: string | number };
-  inputStyle?: boolean;
-  mb?: number;
+  value?: string;
+  onChangeText?: (val: string) => void;
 }
 
-const CustomTextInput: React.FC = () => {
+const CustomTextInput: React.FC<Props> = ({ value, onChangeText }) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <TextInput
       style={[isDarkMode ? styles.textLight : styles.textDark, styles.input]}
+      autoCapitalize="none"
+      autoCorrect={false}
+      value={value}
+      onChangeText={onChangeText}
     />
   );
 };
@@ -39,7 +41,6 @@ const styles = StyleSheet.create({
 export default CustomTextInput;
 
 CustomTextInput.defaultProps = {
-  style: undefined,
-  inputStyle: undefined,
-  mb: undefined,
+  value: undefined,
+  onChangeText: undefined,
 };

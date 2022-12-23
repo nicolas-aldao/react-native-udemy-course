@@ -6,7 +6,7 @@ interface Props {
   style?: { [key: string]: string | number };
   children: JSX.Element;
   marginLeft?: number;
-  title: string;
+  title?: string;
   horizontalCenteredItems?: boolean;
 }
 
@@ -43,5 +43,6 @@ const styles = StyleSheet.create({
 export default BasicLayout;
 
 BasicLayout.defaultProps = {
+  title: undefined,
   style: undefined,
 };

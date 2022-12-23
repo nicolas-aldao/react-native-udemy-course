@@ -14,11 +14,9 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     increment: state => {
-      console.log('🚀 ~ file: counterSlice.ts ~ line 17 ~ state', state);
       state.value += 1;
     },
     decrement: state => {
-      console.log('🚀 ~ file: counterSlice.ts ~ line 21 ~ state', state);
       state.value -= 1;
     },
     // Use the PayloadAction type to declare the contents of `action.payload`

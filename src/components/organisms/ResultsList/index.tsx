@@ -1,5 +1,6 @@
-import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { FlatList, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import CustomText from '../../atoms/CustomText';
 import ResultDetail from '../ResultDetail';
 
@@ -9,17 +10,28 @@ interface Props {
 }
 
 const ResultsList: React.FC<Props> = ({ title, results }) => {
-  console.log(typeof styles.title);
+  const navigation = useNavigation();
+
+  if (!results.length) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <CustomText stylesFromProps={styles.title}>{title}</CustomText>
+      <CustomText>{results?.length}</CustomText>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
         data={results}
         keyExtractor={result => result.id}
         renderItem={({ item }) => {
-          return <ResultDetail result={item} />;
+          return (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Details', { id: item.id })}>
+              <ResultDetail result={item} />
+            </TouchableOpacity>
+          );
         }}
       />
     </View>

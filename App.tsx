@@ -14,21 +14,29 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
 import { theme } from './src/themes';
-import HomeScreen from './src/components/pages/HomeScreen';
-import ListScreen from './src/components/pages/ListScreen';
-import ComponentsScreen from './src/components/pages/ComponentsScreen';
-import ImagesScreen from './src/components/pages/ImagesScreen';
-import CounterScreen from './src/components/pages/CounterScreen';
-import ColorScreen from './src/components/pages/ColorScreen';
-import ChangeColorScreen from './src/components/pages/ChangeColorScreen';
-import ReduxScreen from './src/components/pages/ReduxScreen';
-import DigimonScreen from './src/components/pages/DigimonScreen';
-import ApiScreen from './src/components/pages/ApiScreen';
-import FormScreen from './src/components/pages/FormScreen';
+// import HomeScreen from './src/components/pages/HomeScreen';
+// import ListScreen from './src/components/pages/ListScreen';
+// import ComponentScreen from './src/components/pages/ComponentScreen';
+// import ImagesScreen from './src/components/pages/ImagesScreen';
+// import CounterScreen from './src/components/pages/CounterScreen';
+// import ColorScreen from './src/components/pages/ColorScreen';
+// import ChangeColorScreen from './src/components/pages/ChangeColorScreen';
+// import ReduxScreen from './src/components/pages/ReduxScreen';
+// import DigimonScreen from './src/components/pages/DigimonScreen';
+// import ApiScreen from './src/components/pages/ApiScreen';
+// import FormScreen from './src/components/pages/FormScreen';
 import SearchScreen from './src/components/pages/SearchScreen';
+import DetailsScreen from './src/components/pages/DetailsScreen';
+
+export type RootStackParamList = {
+  Home: undefined;
+  Details: {
+    id: string;
+  };
+};
 
 const App = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <Provider store={store}>
@@ -39,7 +47,7 @@ const App = () => {
             component={SearchScreen}
             //options={{ title: 'Welcome' }}
           />
-          <Stack.Screen name="Components" component={ComponentsScreen} />
+          {/* <Stack.Screen name="Components" component={ComponentScreen} />
           <Stack.Screen name="List" component={ListScreen} />
           <Stack.Screen name="Images" component={ImagesScreen} />
           <Stack.Screen name="Counter" component={CounterScreen} />
@@ -48,7 +56,8 @@ const App = () => {
           <Stack.Screen name="Redux" component={ReduxScreen} />
           <Stack.Screen name="Api" component={ApiScreen} />
           <Stack.Screen name="Digimon" component={DigimonScreen} />
-          <Stack.Screen name="Form" component={FormScreen} />
+          <Stack.Screen name="Form" component={FormScreen} /> */}
+          <Stack.Screen name="Details" component={DetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

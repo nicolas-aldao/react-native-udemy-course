@@ -7,7 +7,6 @@ interface Props {
 }
 
 const ResultDetail: React.FC<Props> = ({ result }) => {
-  console.log('🚀 ~ file: index.tsx:10 ~ result', result.image_url);
   return (
     <View style={styles.container}>
       <Image source={{ uri: result.image_url }} style={styles.image} />

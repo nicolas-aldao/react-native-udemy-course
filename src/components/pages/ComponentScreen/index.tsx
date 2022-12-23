@@ -6,16 +6,16 @@ interface Props {
   title?: string;
 }
 
-const ComponentsScreen: React.FC<Props> = () => {
+const ComponentScreen: React.FC<Props> = () => {
   return (
-    <BasicLayout title="Form">
+    <BasicLayout title="Components">
       <CustomText>Content goes here</CustomText>
     </BasicLayout>
   );
 };
 
-export default ComponentsScreen;
+export default ComponentScreen;
 
-ComponentsScreen.defaultProps = {
+ComponentScreen.defaultProps = {
   title: undefined,
 };

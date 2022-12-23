@@ -19,6 +19,7 @@ const SearchScreen: React.FC<Props> = () => {
       return result.price === price;
     });
   };
+
   // TODO: Agregar flex: 1 al contenedor principal para arreglar el scroll en android
   return (
     <BasicLayout title="Search" marginLeft={0}>
@@ -29,7 +30,6 @@ const SearchScreen: React.FC<Props> = () => {
           onSearchSubmit={() => searchApi(search)}
         />
         {errorMessage ? <CustomText>{errorMessage}</CustomText> : null}
-        <CustomText>{`We have found ${results.length} results.`}</CustomText>
         <ScrollView>
           <ResultsList
             title="Cost Effective"

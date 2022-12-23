@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, StyleSheet} from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import CustomText from '../../atoms/CustomText';
 
 interface Props {
@@ -19,8 +19,8 @@ const ImageDetailsUri: React.FC<Props> = ({
     <View>
       {title && <CustomText mb={7}>{title}</CustomText>}
       <Image
-        source={{uri: imageSource}}
-        style={[{width: width, height: height}, styles.imageStyle]}
+        source={{ uri: imageSource }}
+        style={[{ width: width, height: height }, styles.imageStyle]}
       />
     </View>
   );

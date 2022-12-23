@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const options = {
-  method: 'GET',
-  url: 'https://api.harvardartmuseums.org/Image?apikey=a1ac0a13-0a4b-4c14-a8ca-69995303988c',
-  headers: {
-    'X-RapidAPI-Key': '326a35fdacmsh0a571adb9396777p12cae9jsn8ad278e30f84',
-    'X-RapidAPI-Host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
-  },
-};
+// const options = {
+//   method: 'GET',
+//   url: 'https://api.harvardartmuseums.org/Image?apikey=a1ac0a13-0a4b-4c14-a8ca-69995303988c',
+//   headers: {
+//     'X-RapidAPI-Key': '326a35fdacmsh0a571adb9396777p12cae9jsn8ad278e30f84',
+//     'X-RapidAPI-Host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
+//   },
+// };
 
 export const apiCall = async () => {
   try {

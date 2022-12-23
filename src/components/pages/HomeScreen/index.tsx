@@ -16,7 +16,6 @@ interface Props {
 }
 
 const HomeScreen: React.FC<Props> = ({ navigation }) => {
-  //TODO: Pass files js to ts
   const options = [
     'Components',
     'List',

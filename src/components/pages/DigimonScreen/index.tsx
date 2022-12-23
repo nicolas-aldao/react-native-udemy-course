@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
 import CustomButton from '../../atoms/CustomButton';
 import CustomText from '../../atoms/CustomText';
 import BasicLayout from '../../layouts/BasicLayout';
-import {apiDigimon} from '../../../services/apiMethods';
+import { apiDigimon } from '../../../services/apiMethods';
 import ImageDetailsUri from '../../organisms/ImageDetailsUri';
 
 const DigimonScreen: React.FC = () => {

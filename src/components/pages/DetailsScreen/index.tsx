@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, Image } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../../App';
+import { AppContext } from '../../../context/AppContext';
 import CustomText from '../../atoms/CustomText';
 import yelp from '../../../services/yelp';
 
@@ -13,11 +14,11 @@ const DetailsScreen: React.FC<DetailsProps> = ({
   },
 }) => {
   const [result, setResult] = useState(null);
-
   const getResult = async id => {
     const response = await yelp.get(`/${id}`);
     setResult(response.data);
   };
+  const value = useContext(AppContext);
 
   useEffect(() => {
     getResult(id);
@@ -37,6 +38,7 @@ const DetailsScreen: React.FC<DetailsProps> = ({
           return <Image style={styles.image} source={{ uri: item }} />;
         }}
       />
+      <CustomText>{value.toString()}</CustomText>
     </View>
   );
 };

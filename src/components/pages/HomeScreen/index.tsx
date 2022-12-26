@@ -17,16 +17,18 @@ interface Props {
 
 const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const options = [
-    'Components',
+    //'Components',
     'List',
-    'Images',
+    //'Images',
     'Counter',
-    'Color',
+    //'Color',
     'Redux',
     'Api',
     'Digimon',
     'ChangeColor',
-    'Form',
+    //'Form',
+    'Search',
+    'Blogs',
   ];
   return (
     <BasicLayout marginLeft={0} title="Inicio">

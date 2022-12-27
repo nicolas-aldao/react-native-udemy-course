@@ -19,7 +19,10 @@ const BlogpostDetailScreen: React.FC<Props> = ({
 
   return (
     <BasicLayout>
-      <CustomText>{blogPost.title}</CustomText>
+      <>
+        <CustomText>{blogPost.title}</CustomText>
+        <CustomText>{blogPost.content}</CustomText>
+      </>
     </BasicLayout>
   );
 };

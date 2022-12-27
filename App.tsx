@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { Image, useColorScheme, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
@@ -30,6 +31,9 @@ import SearchScreen from './src/components/pages/SearchScreen';
 import DetailsScreen from './src/components/pages/DetailsScreen';
 import BlogsScreen from './src/components/pages/BlogsScreen';
 import BlogpostDetailScreen from './src/components/pages/BlogpostDetailScreen';
+import AddBlogpostFormScreen from './src/components/pages/AddBlogpostFormScreen';
+import EditBlogpostFormScreen from './src/components/pages/EditBlogpostFormScreen';
+import { TouchableOpacity } from 'react-native';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -47,6 +51,10 @@ export type RootStackParamList = {
   BlogpostDetail: {
     id: string;
   };
+  AddBlogpost: undefined;
+  EditBlogpost: {
+    id: string;
+  };
   Search: undefined;
   Details: {
     id: string;
@@ -54,7 +62,21 @@ export type RootStackParamList = {
 };
 
 const App = () => {
+  const isDarkMode = useColorScheme() === 'dark';
   const Stack = createNativeStackNavigator<RootStackParamList>();
+
+  const PlusIcon = () =>
+    isDarkMode ? (
+      <Image
+        source={require('./src/assets/img/plus-icon-dark.png')}
+        style={styles.plusIcon}
+      />
+    ) : (
+      <Image
+        source={require('./src/assets/img/plus-icon.png')}
+        style={styles.plusIcon}
+      />
+    );
 
   return (
     <BlogProvider>
@@ -78,7 +100,26 @@ const App = () => {
             <Stack.Screen name="Form" component={FormScreen} />
             <Stack.Screen name="Search" component={SearchScreen} />
             <Stack.Screen name="Details" component={DetailsScreen} />
-            <Stack.Screen name="Blogs" component={BlogsScreen} />
+            <Stack.Screen
+              name="Blogs"
+              component={BlogsScreen}
+              options={({ navigation }) => ({
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('AddBlogpost')}>
+                    <PlusIcon />
+                  </TouchableOpacity>
+                ),
+              })}
+            />
+            <Stack.Screen
+              name="AddBlogpost"
+              component={AddBlogpostFormScreen}
+            />
+            <Stack.Screen
+              name="EditBlogpost"
+              component={EditBlogpostFormScreen}
+            />
             <Stack.Screen
               name="BlogpostDetail"
               component={BlogpostDetailScreen}
@@ -89,5 +130,12 @@ const App = () => {
     </BlogProvider>
   );
 };
+
+const styles = StyleSheet.create({
+  plusIcon: {
+    height: 25,
+    width: 25,
+  },
+});
 
 export default App;

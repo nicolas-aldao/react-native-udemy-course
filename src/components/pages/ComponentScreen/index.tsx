@@ -8,7 +8,7 @@ interface Props {
 
 const ComponentScreen: React.FC<Props> = () => {
   return (
-    <BasicLayout title="Components">
+    <BasicLayout>
       <CustomText>Content goes here</CustomText>
     </BasicLayout>
   );

@@ -23,7 +23,9 @@ interface Props {
 const BlogsScreen: React.FC<Props> = ({ navigation }) => {
   const { state, deleteBlogPost, getBlogPosts } = useContext(BlogContext);
   const isDarkMode = useColorScheme() === 'dark';
-
+  
+  console.log("🚀 ~ file: index.tsx:25 ~ PANTALLA ", state)
+  console.log("🚀 ~ file: index.tsx:25 ~ PANTALLA ", state[0])
   useEffect(() => {
     try {
       getBlogPosts();

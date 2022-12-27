@@ -16,8 +16,10 @@ const fetchData = async () => {
 const blogReducer = (state, action) => {
   switch (action.type) {
     case 'get_blogposts':
-      console.log('entra case');
-      return [...state, action.payload];
+      action.payload.map(num => {
+        return console.log(num);
+      });
+      return action.payload;
     case 'add_blogpost':
       return [
         ...state,
@@ -41,10 +43,13 @@ const blogReducer = (state, action) => {
 const getBlogPosts = dispatch => {
   return async () => {
     const res = await fetchData();
+    var newArray = res.data.map(num => {
+      return { id: num._id, title: num.title, content: num.content };
+    });
     if (res == undefined || res.status !== 200) {
-      console.log('Algo salió mal!');
+      console.log('Something went wrong!');
     }
-    dispatch({ type: 'get_blogposts', payload: res.data[0] });
+    dispatch({ type: 'get_blogposts', payload: newArray });
   };
 };
 
@@ -55,9 +60,8 @@ const addBlogPost = dispatch => {
       payload: { title: title, content: content },
     });
     const res = await addBlogPostAPI(title, content);
-    console.log('🚀 ~ file: AppContext.js:56 ~ return ~ res', res);
     if (res == undefined || res.status !== 200) {
-      console.log('Algo salió mal!');
+      console.log('Something went wrong!');
     }
     if (callback) {
       callback();

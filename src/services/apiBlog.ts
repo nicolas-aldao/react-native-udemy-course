@@ -23,3 +23,28 @@ export const addBlogPostAPI = async (title, content) => {
     console.log(err);
   }
 };
+
+export const modifyBlogPostAPI = async (
+  id: string,
+  title: string,
+  content: string,
+) => {
+  try {
+    const res = await axios.put(baseUrl + '/posts/' + id, {
+      title,
+      content,
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteBlogPostAPI = async (id: string) => {
+  try {
+    const res = await axios.delete(baseUrl + '/posts/' + id);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};

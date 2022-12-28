@@ -1,6 +1,11 @@
 import React from 'react';
 import createDataContext from './createDataContext';
-import { getBlogPostsAPI, addBlogPostAPI } from '../services/apiBlog';
+import {
+  getBlogPostsAPI,
+  addBlogPostAPI,
+  deleteBlogPostAPI,
+  modifyBlogPostAPI,
+} from '../services/apiBlog';
 
 export const AppContext = React.createContext({});
 
@@ -16,9 +21,9 @@ const fetchData = async () => {
 const blogReducer = (state, action) => {
   switch (action.type) {
     case 'get_blogposts':
-      action.payload.map(num => {
-        return console.log(num);
-      });
+      // action.payload.map(num => {
+      //   return console.log(num);
+      // });
       return action.payload;
     case 'add_blogpost':
       return [
@@ -70,17 +75,30 @@ const addBlogPost = dispatch => {
 };
 
 const deleteBlogPost = dispatch => {
-  return id => {
-    dispatch({ type: 'delete_blogpost', payload: id });
+  return async id => {
+    const res = await deleteBlogPostAPI(id);
+    if (res == undefined || res.status !== 200) {
+      console.log('Something went wrong!');
+    } else {
+      dispatch({ type: 'delete_blogpost', payload: id });
+    }
+    // if (callback) {
+    //   callback();
+    // }
   };
 };
 
 const editBlogPost = dispatch => {
-  return (id, title, content, callback) => {
-    dispatch({
-      type: 'edit_blogpost',
-      payload: { id, title, content },
-    });
+  return async (id, title, content, callback) => {
+    const res = await modifyBlogPostAPI(id, title, content);
+    if (res == undefined || res.status !== 200) {
+      console.log('Something went wrong!');
+    } else {
+      dispatch({
+        type: 'edit_blogpost',
+        payload: { id, title, content },
+      });
+    }
     if (callback) {
       callback();
     }

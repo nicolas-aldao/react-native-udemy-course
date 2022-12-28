@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import {
   FlatList,
@@ -15,6 +15,7 @@ import { Context as BlogContext } from '../../../context/AppContext';
 import CustomText from '../../atoms/CustomText';
 import BasicLayout from '../../layouts/BasicLayout';
 import { theme } from '../../../themes';
+import MessageModal from '../../organisms/MessageModal';
 
 interface Props {
   navigation: NativeStackNavigationProp<RootStackParamList>;
@@ -22,13 +23,15 @@ interface Props {
 
 const BlogsScreen: React.FC<Props> = ({ navigation }) => {
   const { state, deleteBlogPost, getBlogPosts } = useContext(BlogContext);
+  const [messageError, setMessageError] = useState('');
   const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
     try {
       getBlogPosts();
     } catch (err) {
-      console.log('error ' + err);
+      setMessageError('Ha ocurrido un error, reintenta más tarde.');
+      console.log('useEffect ' + err);
     }
   }, []);
 
@@ -86,7 +89,14 @@ const BlogsScreen: React.FC<Props> = ({ navigation }) => {
                       </TouchableOpacity>
                       <TouchableOpacity
                         onPress={() => {
-                          deleteBlogPost(item.id);
+                          try {
+                            deleteBlogPost(item.id);
+                          } catch (err) {
+                            setMessageError(
+                              'Ha ocurrido un error, reintenta más tarde.',
+                            );
+                            console.log('error ' + err);
+                          }
                         }}>
                         <ThrashIcon />
                       </TouchableOpacity>
@@ -97,6 +107,11 @@ const BlogsScreen: React.FC<Props> = ({ navigation }) => {
             }}
           />
         </View>
+        <MessageModal
+          textModal={messageError}
+          onClose={() => setMessageError('')}
+          messageCondition={messageError !== ''}
+        />
         <TouchableOpacity
           onPress={() =>
             Linking.openURL('https://www.flaticon.com/free-icons/delete')

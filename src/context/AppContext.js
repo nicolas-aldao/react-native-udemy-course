@@ -13,8 +13,8 @@ const fetchData = async () => {
   try {
     return await getBlogPostsAPI();
   } catch (err) {
-    console.log(err);
-    return [];
+    console.log('fetchData' + err);
+    throw Error();
   }
 };
 
@@ -47,14 +47,20 @@ const blogReducer = (state, action) => {
 
 const getBlogPosts = dispatch => {
   return async () => {
-    const res = await fetchData();
-    var newArray = res.data.map(num => {
-      return { id: num._id, title: num.title, content: num.content };
-    });
-    if (res == undefined || res.status !== 200) {
-      console.log('Something went wrong!');
+    try {
+      const res = await fetchData();
+      var newArray = res.data.map(num => {
+        return { id: num._id, title: num.title, content: num.content };
+      });
+      dispatch({ type: 'get_blogposts', payload: newArray });
+      if (res == undefined || res.status !== 200) {
+        console.log('Something went wrong!');
+        return Error();
+      }
+    } catch (err) {
+      console.log('getBlogposts ', err);
+      throw Error();
     }
-    dispatch({ type: 'get_blogposts', payload: newArray });
   };
 };
 

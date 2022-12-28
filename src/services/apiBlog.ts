@@ -7,7 +7,7 @@ export const getBlogPostsAPI = async () => {
     const res = await axios.get(baseUrl + '/posts');
     return res;
   } catch (err) {
-    console.log(err);
+    console.log('getBlogPostsAPI ' + err);
   }
 };
 

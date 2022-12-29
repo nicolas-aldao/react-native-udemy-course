@@ -19,7 +19,6 @@ const ResultsList: React.FC<Props> = ({ title, results }) => {
   return (
     <View style={styles.container}>
       <CustomText stylesFromProps={styles.title}>{title}</CustomText>
-      <CustomText>{results?.length}</CustomText>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}

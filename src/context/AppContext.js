@@ -66,10 +66,10 @@ const getBlogPosts = dispatch => {
 
 const addBlogPost = dispatch => {
   return async (title, content, callback) => {
-    dispatch({
-      type: 'add_blogpost',
-      payload: { title: title, content: content },
-    });
+    // dispatch({
+    //   type: 'add_blogpost',
+    //   payload: { title: title, content: content },
+    // });
     const res = await addBlogPostAPI(title, content);
     if (res == undefined || res.status !== 200) {
       console.log('Something went wrong!');

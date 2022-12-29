@@ -28,11 +28,20 @@ const BlogsScreen: React.FC<Props> = ({ navigation }) => {
 
   useEffect(() => {
     try {
-      getBlogPosts();
+      getBlogPosts(); // first time we load this screen
     } catch (err) {
       setMessageError('Ha ocurrido un error, reintenta más tarde.');
       console.log('useEffect ' + err);
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    let listener: any = navigation.addListener('focus', () => {
+      // every time this screen gets focus again
+      getBlogPosts();
+    });
+    return () => {
+      // when we don't use this screen anymore we remove the listener
+      listener = undefined;
+    };
   }, []);
 
   const ThrashIcon = () =>

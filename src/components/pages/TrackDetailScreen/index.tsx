@@ -6,16 +6,15 @@ interface Props {
   title?: string;
 }
 
-const ComponentScreen: React.FC<Props> = () => {
+const TrackDetailScreen: React.FC<Props> = () => {
   return (
-    <BasicLayout title="ComponentScreen">
-      <CustomText>Content goes here</CustomText>
+    <BasicLayout title="TrackDetailScreen">
     </BasicLayout>
   );
 };
 
-export default ComponentScreen;
+export default TrackDetailScreen;
 
-ComponentScreen.defaultProps = {
+TrackDetailScreen.defaultProps = {
   title: undefined,
 };

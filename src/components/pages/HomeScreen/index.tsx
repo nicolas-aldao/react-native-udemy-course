@@ -29,6 +29,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
     //'Form',
     'Search',
     'Blogs',
+    'SignUp',
   ];
   return (
     <BasicLayout marginLeft={0} title="Inicio">

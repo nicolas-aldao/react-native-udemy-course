@@ -1,4 +1,4 @@
-/**
+/*
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
@@ -12,8 +12,10 @@ import React from 'react'; // Stable commit
 import { Image, useColorScheme, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
+import { TouchableOpacity } from 'react-native';
 import { Provider as BlogProvider } from './src/context/AppContext';
 import { theme } from './src/themes';
 import HomeScreen from './src/components/pages/HomeScreen';
@@ -33,7 +35,11 @@ import BlogsScreen from './src/components/pages/BlogsScreen';
 import BlogpostDetailScreen from './src/components/pages/BlogpostDetailScreen';
 import AddBlogpostFormScreen from './src/components/pages/AddBlogpostFormScreen';
 import EditBlogpostFormScreen from './src/components/pages/EditBlogpostFormScreen';
-import { TouchableOpacity } from 'react-native';
+import SignUpScreen from './src/components/pages/SignUpScreen';
+import SignInScreen from './src/components/pages/SignInScreen';
+import TrackListScreen from './src/components/pages/TrackListScreen';
+import TrackCreateScreen from './src/components/pages/TrackCreateScreen';
+import AccountScreen from './src/components/pages/AccountScreen';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -59,11 +65,18 @@ export type RootStackParamList = {
   Details: {
     id: string;
   };
+  SignUp: undefined;
+  SignIn: undefined;
+  MainFlow: undefined;
+  TrackList: undefined;
+  TrackCreate: undefined;
+  Account: undefined;
 };
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const Stack = createNativeStackNavigator<RootStackParamList>();
+  const Tab = createBottomTabNavigator<RootStackParamList>();
 
   const PlusIcon = () =>
     isDarkMode ? (
@@ -77,6 +90,28 @@ const App = () => {
         style={styles.plusIcon}
       />
     );
+
+  function MainFlow() {
+    return (
+      <Tab.Navigator>
+        <Tab.Screen
+          name="TrackCreate"
+          component={TrackCreateScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Account"
+          component={AccountScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="TrackList"
+          component={TrackListScreen}
+          options={{ headerShown: false }}
+        />
+      </Tab.Navigator>
+    );
+  }
 
   return (
     <BlogProvider>
@@ -123,6 +158,13 @@ const App = () => {
             <Stack.Screen
               name="BlogpostDetail"
               component={BlogpostDetailScreen}
+            />
+            <Stack.Screen name="SignUp" component={SignUpScreen} />
+            <Stack.Screen name="SignIn" component={SignInScreen} />
+            <Stack.Screen
+              name="MainFlow"
+              component={MainFlow}
+              options={{ headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>

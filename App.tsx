@@ -17,6 +17,7 @@ import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
 import { TouchableOpacity } from 'react-native';
 import { Provider as BlogProvider } from './src/context/AppContext';
+import { Provider as AuthProvider } from './src/context/AuthContext';
 import { theme } from './src/themes';
 import HomeScreen from './src/components/pages/HomeScreen';
 import ListScreen from './src/components/pages/ListScreen';
@@ -40,6 +41,7 @@ import SignInScreen from './src/components/pages/SignInScreen';
 import TrackListScreen from './src/components/pages/TrackListScreen';
 import TrackCreateScreen from './src/components/pages/TrackCreateScreen';
 import AccountScreen from './src/components/pages/AccountScreen';
+import ResolveAuthScreen from './src/components/pages/ResolveAuthScreen';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -65,6 +67,7 @@ export type RootStackParamList = {
   Details: {
     id: string;
   };
+  ResolveAuth: undefined;
   SignUp: undefined;
   SignIn: undefined;
   MainFlow: undefined;
@@ -112,63 +115,74 @@ const App = () => {
       </Tab.Navigator>
     );
   }
-
+  // TODO: Different contexts affecting differents parts of the app (AuthProvider)
   return (
     <BlogProvider>
-      <Provider store={store}>
-        <NavigationContainer theme={theme}>
-          <Stack.Navigator id="MyNavigator">
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              //options={{ title: 'Welcome' }}
-            />
-            <Stack.Screen name="Components" component={ComponentScreen} />
-            <Stack.Screen name="List" component={ListScreen} />
-            <Stack.Screen name="Images" component={ImagesScreen} />
-            <Stack.Screen name="Counter" component={CounterScreen} />
-            <Stack.Screen name="Color" component={ColorScreen} />
-            <Stack.Screen name="ChangeColor" component={ChangeColorScreen} />
-            <Stack.Screen name="Redux" component={ReduxScreen} />
-            <Stack.Screen name="Api" component={ApiScreen} />
-            <Stack.Screen name="Digimon" component={DigimonScreen} />
-            <Stack.Screen name="Form" component={FormScreen} />
-            <Stack.Screen name="Search" component={SearchScreen} />
-            <Stack.Screen name="Details" component={DetailsScreen} />
-            <Stack.Screen
-              name="Blogs"
-              component={BlogsScreen}
-              options={({ navigation }) => ({
-                headerRight: () => (
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('AddBlogpost')}>
-                    <PlusIcon />
-                  </TouchableOpacity>
-                ),
-              })}
-            />
-            <Stack.Screen
-              name="AddBlogpost"
-              component={AddBlogpostFormScreen}
-            />
-            <Stack.Screen
-              name="EditBlogpost"
-              component={EditBlogpostFormScreen}
-            />
-            <Stack.Screen
-              name="BlogpostDetail"
-              component={BlogpostDetailScreen}
-            />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-            <Stack.Screen name="SignIn" component={SignInScreen} />
-            <Stack.Screen
-              name="MainFlow"
-              component={MainFlow}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </Provider>
+      <AuthProvider>
+        <Provider store={store}>
+          <NavigationContainer theme={theme}>
+            <Stack.Navigator id="MyNavigator">
+              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="Components" component={ComponentScreen} />
+              <Stack.Screen name="List" component={ListScreen} />
+              <Stack.Screen name="Images" component={ImagesScreen} />
+              <Stack.Screen name="Counter" component={CounterScreen} />
+              <Stack.Screen name="Color" component={ColorScreen} />
+              <Stack.Screen name="ChangeColor" component={ChangeColorScreen} />
+              <Stack.Screen name="Redux" component={ReduxScreen} />
+              <Stack.Screen name="Api" component={ApiScreen} />
+              <Stack.Screen name="Digimon" component={DigimonScreen} />
+              <Stack.Screen name="Form" component={FormScreen} />
+              <Stack.Screen name="Search" component={SearchScreen} />
+              <Stack.Screen name="Details" component={DetailsScreen} />
+              <Stack.Screen
+                name="Blogs"
+                component={BlogsScreen}
+                options={({ navigation }) => ({
+                  headerRight: () => (
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('AddBlogpost')}>
+                      <PlusIcon />
+                    </TouchableOpacity>
+                  ),
+                })}
+              />
+              <Stack.Screen
+                name="AddBlogpost"
+                component={AddBlogpostFormScreen}
+              />
+              <Stack.Screen
+                name="EditBlogpost"
+                component={EditBlogpostFormScreen}
+              />
+              <Stack.Screen
+                name="BlogpostDetail"
+                component={BlogpostDetailScreen}
+              />
+              <Stack.Screen
+                name="SignUp"
+                component={SignUpScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="SignIn"
+                component={SignInScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="MainFlow"
+                component={MainFlow}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="ResolveAuth"
+                component={ResolveAuthScreen}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </Provider>
+      </AuthProvider>
     </BlogProvider>
   );
 };

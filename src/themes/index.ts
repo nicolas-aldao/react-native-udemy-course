@@ -11,6 +11,7 @@ export interface DefaultTheme {
     background: string;
     card: string;
     text: string;
+    link: string;
     border: string;
     gray: string;
     success: string;
@@ -30,6 +31,7 @@ export const lightTheme: DefaultTheme = {
     background: '#FFFFFF',
     card: '#FFFFFF',
     text: '#000000',
+    link: '#006fd5',
     border: '#d3d3d3',
     gray: '#7d7d7d',
     success: '##52c41a',
@@ -49,6 +51,7 @@ export const darkTheme: DefaultTheme = {
     background: '#261C2C',
     card: '#5C527F',
     text: '#f8f8f8',
+    link: '#A3C7D6',
     border: '#d3d3d3',
     gray: '#d3d3d3',
     success: '#439946',

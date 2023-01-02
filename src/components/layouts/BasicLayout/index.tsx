@@ -17,7 +17,7 @@ const BasicLayout: React.FC<Props> = ({
   title,
   horizontalCenteredItems,
 }) => {
-  const calculatedMargin = marginLeft === undefined ? 30 : marginLeft;
+  const calculatedMargin = marginLeft === undefined ? 0 : marginLeft;
   return (
     <View
       style={[
@@ -33,7 +33,10 @@ const BasicLayout: React.FC<Props> = ({
 
 const styles = StyleSheet.create({
   mainContainer: {
+    flex: 1, // testing
     marginTop: 20,
+    // borderColor: 'red',
+    // borderWidth: 1,
   },
   horizontalCenterItems: {
     alignItems: 'center',

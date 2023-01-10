@@ -1,9 +1,6 @@
 import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
-import {
-  //NativeStackScreenProps,
-  NativeStackNavigationProp,
-} from '@react-navigation/native-stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import BasicLayout from '../../layouts/BasicLayout';
 import CustomButton from '../../atoms/CustomButton';
 
@@ -18,21 +15,21 @@ interface Props {
 const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const options = [
     //'Components',
-    'List',
+    //'List',
     //'Images',
-    'Counter',
+    //'Counter',
     //'Color',
+    //'ChangeColor',
+    //'Form',
     'Redux',
     'Api',
     'Digimon',
-    'ChangeColor',
-    //'Form',
     'Search',
     'Blogs',
     'ResolveAuth',
   ];
   return (
-    <BasicLayout marginLeft={0} title="Inicio">
+    <BasicLayout marginLeft={0}>
       <View style={styles.mainContainer}>
         <FlatList
           data={options}

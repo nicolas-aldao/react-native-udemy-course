@@ -14,14 +14,22 @@ const AccountScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <BasicLayout title="AccountScreen">
-      <CustomButton
-        title="Sign out"
-        onPress={() => {
-          signOut(() => {
-            navigation.navigate('SignIn');
-          });
-        }}
-      />
+      <>
+        <CustomButton
+          title="Sign out"
+          onPress={() => {
+            signOut(() => {
+              navigation.navigate('SignIn');
+            });
+          }}
+        />
+        <CustomButton
+          title="Back to Home"
+          onPress={() => {
+            navigation.navigate('Home');
+          }}
+        />
+      </>
     </BasicLayout>
   );
 };

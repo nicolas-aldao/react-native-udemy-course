@@ -34,7 +34,7 @@ const BasicLayout: React.FC<Props> = ({
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1, // testing
-    marginTop: 20,
+    marginTop: 20, // TODO: implement safeareaview or similar
     // borderColor: 'red',
     // borderWidth: 1,
   },

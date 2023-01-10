@@ -1,18 +1,16 @@
 import React from 'react';
-import {StyleSheet, FlatList} from 'react-native';
-import {useAppSelector} from '../../../app/hooks';
+import { StyleSheet, FlatList } from 'react-native';
 import CustomText from '../../atoms/CustomText';
 import BasicLayout from '../../layouts/BasicLayout';
 
 interface Props {}
 
 const ListScreen: React.FC<Props> = () => {
-  const count = useAppSelector(state => state.counter.value);
   const friends = [
-    {name: 'Friend #1', key: '1'},
-    {name: 'Friend #2', key: '2'},
-    {name: 'Friend #3', key: '3'},
-    {name: 'Friend #4', key: '4'},
+    { name: 'Friend #1', key: '1' },
+    { name: 'Friend #2', key: '2' },
+    { name: 'Friend #3', key: '3' },
+    { name: 'Friend #4', key: '4' },
   ];
 
   return (
@@ -20,7 +18,7 @@ const ListScreen: React.FC<Props> = () => {
       <>
         <FlatList
           data={friends}
-          renderItem={({item}) => {
+          renderItem={({ item }) => {
             return (
               <CustomText style={styles.textStyle} key={item.key}>
                 {item.name}
@@ -28,7 +26,6 @@ const ListScreen: React.FC<Props> = () => {
             );
           }}
         />
-        <CustomText>{count.toString()}</CustomText>
       </>
     </BasicLayout>
   );

@@ -5,6 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../../App';
 import { Context as AuthContext } from '../../../context/AuthContext';
 import CustomText from '../../atoms/CustomText';
+import CustomButton from '../../atoms/CustomButton';
 import BasicLayout from '../../layouts/BasicLayout';
 import TextLink from '../../atoms/TextLink';
 
@@ -39,6 +40,12 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
       horizontalCenteredItems
       style={{ justifyContent: 'space-evenly' }}>
       <>
+        <CustomButton
+          title="Back to Home"
+          onPress={() => {
+            navigation.navigate('Home');
+          }}
+        />
         <CustomText>Sign Up for Tracker</CustomText>
         <TextInput
           label="Email"

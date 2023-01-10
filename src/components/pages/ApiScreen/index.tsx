@@ -1,15 +1,17 @@
-import React, {useState} from 'react';
-import {FlatList} from 'react-native';
+import React, { useState } from 'react';
+import { FlatList } from 'react-native';
+import { useAppSelector } from '../../../app/hooks';
 import CustomButton from '../../atoms/CustomButton';
 import CustomText from '../../atoms/CustomText';
 import BasicLayout from '../../layouts/BasicLayout';
-import {apiCall} from '../../../services/apiMethods';
+import { apiCall } from '../../../services/apiMethods';
 import ImageDetailsUri from '../../organisms/ImageDetailsUri';
 
 const ApiScreen = () => {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const count = useAppSelector(state => state.counter.value);
 
   const onPressButton = async () => {
     setLoading(true);
@@ -29,6 +31,7 @@ const ApiScreen = () => {
   return (
     <BasicLayout title="API Example" marginLeft={0} horizontalCenteredItems>
       <>
+        <CustomText>{count.toString()}</CustomText>
         <CustomButton
           title="Call API"
           onPress={async () => {
@@ -39,7 +42,7 @@ const ApiScreen = () => {
         {!loading && cards !== undefined && (
           <FlatList
             data={cards}
-            renderItem={({item}) => {
+            renderItem={({ item }) => {
               return (
                 <ImageDetailsUri
                   title=""
